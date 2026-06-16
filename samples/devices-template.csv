@@ -1,0 +1,5 @@
+hostname,ip,type,role,tier,segment,cidr,vlan,is_main,is_perimeter,parent,status,icon,vendor,model,serial_number
+FW-EDGE-01,10.0.0.1,firewall,perimeter,1,WAN,10.0.0.0/30,,true,true,,UP,firewall,Fortinet,FG-100F,
+SW-CORE-01,192.168.1.2,switch,core,3,Core,192.168.1.0/24,1,true,false,FW-EDGE-01,UP,switch,Cisco,C9300,
+SW-ACCESS-01,192.168.50.2,switch,access,5,Usuarios,192.168.50.0/24,50,false,false,SW-CORE-01,UP,switch,Cisco,C2960,
+PC-001,192.168.50.20,endpoint,host,6,Usuarios,192.168.50.0/24,50,false,false,SW-ACCESS-01,UP,endpoint,,,

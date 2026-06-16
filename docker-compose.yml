@@ -1,0 +1,49 @@
+name: netmap-builder-v1
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: netmap-builder-db
+    environment:
+      POSTGRES_DB: netmap
+      POSTGRES_USER: netmap
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-netmap-db-password}
+    volumes:
+      - netmap_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U netmap -d netmap"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: netmap-builder-api
+    environment:
+      DATABASE_URL: postgresql+psycopg2://netmap:${POSTGRES_PASSWORD:-change-me-netmap-db-password}@db:5432/netmap
+      AUTH_SECRET: ${AUTH_SECRET:-change-me-with-a-long-random-secret}
+      NETMAP_ADMIN_USER: ${NETMAP_ADMIN_USER:-admin}
+      NETMAP_ADMIN_PASSWORD: ${NETMAP_ADMIN_PASSWORD:-change-me-admin-password}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      APP_VERSION: v.1.5.1
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: netmap-builder-web
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  netmap_postgres_data:

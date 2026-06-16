@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<nmaprun scanner="nmap" args="nmap -sV --open -oX nmap-scan.xml 127.0.0.1">
+  <host>
+    <status state="up" />
+    <address addr="127.0.0.1" addrtype="ipv4" />
+    <hostnames><hostname name="localhost" type="user" /></hostnames>
+    <ports>
+      <port protocol="tcp" portid="8080"><state state="open"/><service name="http" product="nginx" version="1.27" /></port>
+    </ports>
+  </host>
+</nmaprun>

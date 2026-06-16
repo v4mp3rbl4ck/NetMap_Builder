@@ -1,0 +1,4 @@
+source_type,source_name,target_type,target_name,dependency_type,criticality
+service,Portal Web,device,SRV-APP-01,runs_on,high
+device,SRV-APP-01,device,SW-CORE-01,depends_on,high
+segment,Usuarios,device,SW-ACCESS-02,depends_on,medium

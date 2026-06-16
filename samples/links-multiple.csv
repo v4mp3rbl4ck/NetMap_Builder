@@ -1,0 +1,4 @@
+source_device,source_interface,target_device,target_interface,link_type,status,label,link_group,link_role,discovery_method,notes
+SW-ACCESS-01,Gi1/0/49,SW-CORE-01,Gi1/0/1,physical_link,UP,Uplink 1,LAG-01,primary,manual,Primer miembro del Port-Channel
+SW-ACCESS-01,Gi1/0/50,SW-CORE-01,Gi1/0/2,physical_link,UP,Uplink 2,LAG-01,primary,manual,Segundo miembro del Port-Channel
+SRV-APP-01,eth1,SW-CORE-01,Gi1/0/10,backup_link,UP,NIC backup,,backup,manual,Conexión secundaria del servidor
