@@ -89,9 +89,6 @@ Canvas interactivo basado en React Flow.
 - Resaltado de nodos afectados al simular una falla.
 - Selección múltiple de nodos para acciones masivas.
 
-**Panel izquierdo colapsable:** el botón `‹` / `›` reduce el sidebar a 52 px (solo iconos) para maximizar el área del canvas.
-
-**Panel derecho contextual:** arranca cerrado. Se abre automáticamente al seleccionar un nodo, enlace o dependencia. Se cierra con el botón `×`.
 
 ### Inventario
 
@@ -113,14 +110,12 @@ Tabla enterprise con todas las operaciones sobre dispositivos.
 - Los enlaces paralelos entre los mismos dos equipos se dibujan como una sola línea agrupada con badge `N enlaces · GRUPO`.
 
 ### Servicios
-
 Catálogo de servicios y aplicaciones para análisis de dependencia e impacto.
 
 - Registrar servicios con tipo, criticidad, estado y propietario.
 - Vincular servicios a dispositivos mediante dependencias.
 
 ### Importar
-
 Carga masiva de datos desde archivos:
 
 | Archivo | Endpoint | Descripción |
